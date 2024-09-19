@@ -1,4 +1,5 @@
 # Road To The West
+Some details are subject to change. Check the homepage for updates and play the game at [Road To The West](https://j-m-nichols.github.io/Road-To-The-West/).
 
 ## Functions
 1. Resources
@@ -20,7 +21,7 @@
 A certain amount of food is used each day. The amount will be 1 food per settler per day. Food will expire after 3 days. Food can be preserved while gathering resources.
 
 #### Preserved Food
-While gathering food, 500 food can be preserved. Preserved food can last a random number from 14 to 90 days.
+While gathering food, 500 food can be preserved. Preserved food can last around 45 days.
 
 #### Cattle
 Cattle can be converted into food while gathering resources. A single cattle would produce 2,000 food. Cattle can be obtained by trading tools, or found during events. 1 settler is needed to manage 1 cattle.
@@ -38,13 +39,13 @@ A wagon can hold 2,000 food preserved or not or 8 people or 100 tools.
 - Move forward
 - Chance of events
 
-### Move Forward
+#### Move Forward
 The caravan can travel 30-40 miles per day. If there are no wagons, the caravan can travel 10-20 miles per day.
 
-### Chance of events
+#### Chance of events
 Each day of travel has a 40% chance of a random event.
 
-## Events
+### Events
 - River crossing : 5% chance of loss for each resource
 - Illness : 5% chance of loss for each settler
 - Encounter with Native Americans (50% chance of a loss of 10% of each resource)
@@ -55,7 +56,7 @@ Each day of travel has a 40% chance of a random event.
 - Rain : 2-4 days : movement speed decreased by 20%
 - Heat wave : 2-4 days : food decays 20% faster
 
-## Seasons
+### Seasons
     - Summer
         - 15% chance of Heat Wave : 2-4 days : food decays 20% faster
         - 20% increase in encounters with settlers and Native Americans and cattle
@@ -72,10 +73,10 @@ Each day of travel has a 40% chance of a random event.
         - 5% increase in encounters of rain        
         - 10% increase in encounters with settlers and Native Americans and cattle
 
-## Completion
+### Completion
 Travel 3,000 miles with at least 1 settler still alive.
 
-## Initial Resources
+### Initial Resources
 - 0 food
 - 1,500-2,000 preserved food
 - 3-5 cattle
@@ -86,16 +87,3 @@ Travel 3,000 miles with at least 1 settler still alive.
 The initial resources are based on random chance. A random number from 0-9 is chosen for each resource then that percentage of (n * 0.1) is added to the resource (rounding down). An extra cattle is given for each wagon.
 
 When enountering a settler group, they have 5-15% of initial resources after base being assigned.
-
-## Set-Up
-
-1. ~~Describe functions~~
-2. Redesign Redux using Redux-Toolkit
-3. Describe Layout
-4. Set up JS Actions
-5. Connect UI
-6. Connect Firebase functionality
-    6.1 Authentication
-    6.2 User Data
-    6.3 Top 10 user scores
-7. Add to NichathanGaming.com
