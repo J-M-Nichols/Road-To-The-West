@@ -1,70 +1,101 @@
-# Getting Started with Create React App
+# Road To The West
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Functions
+1. Resources
+2. Travel
+3. Seasons
+4. Event
+5. Completion
+6. Initial Resources
 
-## Available Scripts
+### Resources
+- Food
+- Preserved Food
+- Cattle
+- Tools
+- Settlers
+- Wagons
 
-In the project directory, you can run:
+#### Food
+A certain amount of food is used each day. The amount will be 1 food per settler per day. Food will expire after 3 days. Food can be preserved while gathering resources.
 
-### `npm start`
+#### Preserved Food
+While gathering food, 500 food can be preserved. Preserved food can last a random number from 14 to 90 days.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### Cattle
+Cattle can be converted into food while gathering resources. A single cattle would produce 2,000 food. Cattle can be obtained by trading tools, or found during events. 1 settler is needed to manage 1 cattle.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### Tools
+Tools can be used to maintain wagons while gathering resources. Tools can be obtained by trading cattle, or found during events. Between 25-75 tools can be used to save a wagon if it is lost by anything other than a lack of cattle.
 
-### `npm test`
+#### Settlers
+As long as you have a single settler, you can continue playing the game. 1 settler and 1 cattle are needed to move 1 wagon. A single settler can hold 500 food or 25 tools.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Wagons
+A wagon can hold 2,000 food preserved or not or 8 people or 100 tools.
 
-### `npm run build`
+### Travel
+- Move forward
+- Chance of events
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Move Forward
+The caravan can travel 30-40 miles per day. If there are no wagons, the caravan can travel 10-20 miles per day.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Chance of events
+Each day of travel has a 40% chance of a random event.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Events
+- River crossing : 5% chance of loss for each resource
+- Illness : 5% chance of loss for each settler
+- Encounter with Native Americans (50% chance of a loss of 10% of each resource)
+- Encounter with other settlers (trade options)
+    - Trade 50-150 food per settler : 3-5 settlers available
+    - 25% chance to have the whole caravan with 5-15% starting resources added to the players caravan
+- Encounter cattle : can accept 1-5 cattle, min 1
+- Rain : 2-4 days : movement speed decreased by 20%
+- Heat wave : 2-4 days : food decays 20% faster
 
-### `npm run eject`
+## Seasons
+    - Summer
+        - 15% chance of Heat Wave : 2-4 days : food decays 20% faster
+        - 20% increase in encounters with settlers and Native Americans and cattle
+        - 10% decrease in chance of illness
+        - 10% decrease in chance of rain
+    - Fall/Autumn
+        - 10% increase in encounters with settlers and Native Americans and cattle
+        - 5% increase in encounters of rain 
+    - Winter
+        - 10% Decrease in encounters with settlers and Native Americans and cattle
+        - 15% increase in encounters of illness
+        - 10% increase in encounters of rain 
+    - Spring
+        - 5% increase in encounters of rain        
+        - 10% increase in encounters with settlers and Native Americans and cattle
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Completion
+Travel 3,000 miles with at least 1 settler still alive.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Initial Resources
+- 0 food
+- 1,500-2,000 preserved food
+- 3-5 cattle
+- 10-20 settlers
+- 5-8 wagons
+- 150-200 tools
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The initial resources are based on random chance. A random number from 0-9 is chosen for each resource then that percentage of (n * 0.1) is added to the resource (rounding down). An extra cattle is given for each wagon.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+When enountering a settler group, they have 5-15% of initial resources after base being assigned.
 
-## Learn More
+## Set-Up
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. ~~Describe functions~~
+2. Redesign Redux using Redux-Toolkit
+3. Describe Layout
+4. Set up JS Actions
+5. Connect UI
+6. Connect Firebase functionality
+    6.1 Authentication
+    6.2 User Data
+    6.3 Top 10 user scores
+7. Add to NichathanGaming.com
