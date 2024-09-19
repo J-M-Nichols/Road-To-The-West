@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Road-To-The-West/static/css/main.d221dc40.css",
-    "main.js": "/Road-To-The-West/static/js/main.1562d7d5.js",
+    "main.js": "/Road-To-The-West/static/js/main.cd110999.js",
     "index.html": "/Road-To-The-West/index.html",
     "main.d221dc40.css.map": "/Road-To-The-West/static/css/main.d221dc40.css.map",
-    "main.1562d7d5.js.map": "/Road-To-The-West/static/js/main.1562d7d5.js.map"
+    "main.cd110999.js.map": "/Road-To-The-West/static/js/main.cd110999.js.map"
   },
   "entrypoints": [
     "static/css/main.d221dc40.css",
-    "static/js/main.1562d7d5.js"
+    "static/js/main.cd110999.js"
   ]
 }
