@@ -15,6 +15,7 @@ const AboutMe = () => {
                 <p className="m-3">
                     I am John, the developer of <b>Road To The West</b>. I have been developing small apps and games in Unity with C# since 2012 but in the past 3 years I have been creating MERN and FERN websites. This is my first website using Redux and Bootstrap and I hope that you enjoy it. 
                 </p>
+                <p>Please let me know if you enjoy the game. It would make my day and encourage me to add accounts, game saving and leaderboards.</p>
             </section>
             <section className="m-3 p-3 border rounded" aria-label="Developer Contact">
                 <h2>Contact information for the developer</h2>
