@@ -28,49 +28,85 @@ const AbandonResources = () =>{
                 if(actualAbandon > food) actualAbandon = food
                 if(actualAbandon > 0) {
                     dispatch(consumeFood({amount : actualAbandon}))
-                    dispatch(addContent(`You abandoned ${actualAbandon} ${abandonName.toLowerCase()}.`))
+                    dispatch(addContent({
+                        content: `You abandoned ${actualAbandon} ${abandonName.toLowerCase()}.`,
+                        classNames: 'text-danger'
+                    }))
                 }
-                else dispatch(addContent(`You do not have enough ${abandonName.toLowerCase()} to abandon.`))
+                else dispatch(addContent({
+                    content: `You do not have enough ${abandonName.toLowerCase()} to abandon.`,
+                    classNames: 'text-secondary'
+                }))
                 break
             case 'Preserved Food' :
                 if(actualAbandon > preservedFood) actualAbandon = preservedFood
                 if(actualAbandon > 0) {
                     dispatch(consumePreservedFood({ amount : actualAbandon }))
-                    dispatch(addContent(`You abandoned ${actualAbandon} ${abandonName.toLowerCase()}.`))
+                    dispatch(addContent({
+                        content: `You abandoned ${actualAbandon} ${abandonName.toLowerCase()}.`,
+                        classNames: 'text-danger'
+                    }))
                 }
-                else dispatch(addContent(`You do not have enough ${abandonName.toLowerCase()} to abandon.`))
+                else dispatch(addContent({
+                    content: `You do not have enough ${abandonName.toLowerCase()} to abandon.`,
+                    classNames: 'text-secondary'
+                }))
                 break
             case 'Tools' :
                 if(actualAbandon > tools) actualAbandon = tools
                 if(actualAbandon > 0) {
                     dispatch(removeTools(actualAbandon))
-                    dispatch(addContent(`You abandoned ${actualAbandon} ${abandonName.toLowerCase()}.`))
+                    dispatch(addContent({
+                        content: `You abandoned ${actualAbandon} ${abandonName.toLowerCase()}.`,
+                        classNames: 'text-danger'
+                    }))
                 }
-                else dispatch(addContent(`You do not have enough ${abandonName.toLowerCase()} to abandon.`))
+                else dispatch(addContent({
+                    content: `You do not have enough ${abandonName.toLowerCase()} to abandon.`,
+                    classNames: 'text-secondary'
+                }))
                 break
             case 'Settlers' :
                 if(actualAbandon > settlers) actualAbandon = settlers
                 if(actualAbandon > 0) {
                     dispatch(removeSettlers(actualAbandon))
-                    dispatch(addContent(`You abandoned ${actualAbandon} ${abandonName.toLowerCase()}.`))
+                    dispatch(addContent({
+                        content: `You abandoned ${actualAbandon} ${abandonName.toLowerCase()}.`,
+                        classNames: 'text-danger'
+                    }))
                 }
-                else dispatch(addContent(`You do not have enough ${abandonName.toLowerCase()} to abandon.`))
+                else dispatch(addContent({
+                    content: `You do not have enough ${abandonName.toLowerCase()} to abandon.`,
+                    classNames: 'text-secondary'
+                }))
                 break
             case 'Cattle' :
                 if(actualAbandon > cattle) actualAbandon = cattle
                 if(actualAbandon > 0) {
                     dispatch(killCattle(actualAbandon))
-                    dispatch(addContent(`You abandoned ${actualAbandon} ${abandonName.toLowerCase()}.`))
+                    dispatch(addContent({
+                        content: `You abandoned ${actualAbandon} ${abandonName.toLowerCase()}.`,
+                        classNames: 'text-danger'
+                    }))
                 }
-                else dispatch(addContent(`You do not have enough ${abandonName.toLowerCase()} to abandon.`))
+                else dispatch(addContent({
+                    content: `You do not have enough ${abandonName.toLowerCase()} to abandon.`,
+                    classNames: 'text-secondary'
+                }))
                 break
             case 'Wagons' :
                 if(actualAbandon > wagons) actualAbandon = wagons
                 if(actualAbandon > 0) {
                     dispatch(removeWagons(actualAbandon))
-                    dispatch(addContent(`You abandoned ${actualAbandon} ${abandonName.toLowerCase()}.`))
+                    dispatch(addContent({
+                        content: `You abandoned ${actualAbandon} ${abandonName.toLowerCase()}.`,
+                        classNames: 'text-danger'
+                    }))
                 }
-                else dispatch(addContent(`You do not have enough ${abandonName.toLowerCase()} to abandon.`))
+                else dispatch(addContent({
+                    content: `You do not have enough ${abandonName.toLowerCase()} to abandon.`,
+                    classNames: 'text-secondary'
+                }))
                 break
             default:
                 break
@@ -90,13 +126,13 @@ const AbandonResources = () =>{
                 />
                 <button 
                     type="button"
-                    className="btn btn-outline-secondary"
+                    className="btn btn-outline-success"
                     aria-label="Abandon Resource"
                     onClick={()=>handleAbandonResources()}
                 >Abandon {abandonName}</button>
                 <button
                     type="button"
-                    className="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+                    className="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
                     data-bs-toggle='dropdown'
                     aria-expanded='false'
                 >

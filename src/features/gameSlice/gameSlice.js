@@ -1,23 +1,41 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { GitHubStorageHandler } from "github-localstorage-handler"
+import trackedPaths from "../../handlers/trackedPaths"
 
-const initialState = {
+const defaultGame = {
     distanceTraveled: 0,
     gameCompleted: false,
     score: 0,
 }
 
+const gameHandler = new GitHubStorageHandler(trackedPaths.game)
+
+const initialState = gameHandler.getObject(defaultGame)
+
 const gameSlice = createSlice({
     name: 'game',
     initialState,
     reducers: {
-        updateDistanceTraveled: (state, action) => {
-            state.distanceTraveled += action.payload
+        updateDistanceTraveled: (state, {payload}) => {
+            const newState = state
+            newState.distanceTraveled += payload
+
+            gameHandler.setObject(newState)
+            state = newState
+            return newState
         },
-        checkGameCompletion: (state, action) => {
-            if(state.distanceTraveled >= 3000) {
-                state.gameCompleted = true
-                state.score = calculateScore(action.payload)
+        checkGameCompletion: (state, {payload}) => {
+            const newState = state
+
+            if(newState.distanceTraveled >= 3000) {
+                newState.gameCompleted = true
+                newState.score = calculateScore(payload)
+
+                gameHandler.setObject(newState)
+                state = newState
             }
+
+            return newState
         }
     }
 })

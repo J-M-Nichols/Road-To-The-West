@@ -2,6 +2,8 @@
 Some details are subject to change. Check the homepage for updates and play the game at [Road To The West](https://j-m-nichols.github.io/Road-To-The-West/).
 Please let me know if you enjoy the game. It would make my day and encourage me to add accounts, game saving and leaderboards.
 
+[Play Now](https://j-m-nichols.github.io/Road-To-The-West/)
+
 ## Functions
 1. Resources
 2. Travel
@@ -58,6 +60,8 @@ Each day of travel has a 40% chance of a random event.
 - Heat wave : 2-4 days : food decays 20% faster
 
 ### Seasons
+    Seasons change every 30 days.
+
     - Summer
         - 15% chance of Heat Wave : 2-4 days : food decays 20% faster
         - 20% increase in encounters with settlers and Native Americans and cattle

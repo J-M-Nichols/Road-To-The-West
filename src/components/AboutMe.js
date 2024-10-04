@@ -1,5 +1,5 @@
 import React from "react"
-import { Col, Container, OverlayTrigger, Row, Tooltip } from "react-bootstrap"
+import { OverlayTrigger, Tooltip } from "react-bootstrap"
 
 const AboutMe = () => {
     return (
@@ -19,85 +19,64 @@ const AboutMe = () => {
             </section>
             <section className="m-3 p-3 border rounded" aria-label="Developer Contact">
                 <h2>Contact information for the developer</h2>
-                <Container
-                    aria-label="Developer Contact Links"
-                    className="m-3"
+                <div
+                    className="d-flex flex-wrap justify-content-center gap-3"
                 >
-                    <Row 
-                        className="g-3 justify-content-center"
+                    <OverlayTrigger 
+                        placement="bottom"
+                        overlay={
+                            <Tooltip>Email me at JNichols@NichathanGaming.com.</Tooltip>
+                        }
                     >
-                        <Col 
-                            className="d-flex col-sm-3"
-                        >
-                            <OverlayTrigger 
-                                placement="bottom"
-                                overlay={
-                                    <Tooltip>Email me at JNichols@NichathanGaming.com.</Tooltip>
-                                }
-                            >
-                                <a 
-                                    className="btn btn-outline-info flex-fill"
-                                    href="mailto:JNichols@NichathanGaming.com?subject=Contact%20from%20Road%20To%20The%20West%20Game&body=Hello%20NichathanGaming,"
-                                    aria-label="Email"
-                                >Email Me</a>
-                            </OverlayTrigger>
-                        </Col>
-                        <Col 
-                            className="d-flex col-sm-3"
-                        >
-                            <OverlayTrigger 
-                                placement="bottom"
-                                overlay={
-                                    <Tooltip>Visit my LinkedIn.</Tooltip>
-                                }
-                            >
-                                <a 
-                                    className="btn btn-outline-info flex-fill"
-                                    href="https://www.linkedin.com/in/johnathan-nichols-571b87272"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label="LinkedIn"
-                                >LinkedIn</a>
-                            </OverlayTrigger>
-                        </Col>
-                        <Col 
-                            className="d-flex col-sm-3"
-                        >
-                            <OverlayTrigger 
-                                placement="bottom"
-                                overlay={
-                                    <Tooltip>Visit my GitHub Page.</Tooltip>
-                                }
-                            >
-                                <a 
-                                    className="btn btn-outline-info flex-fill"
-                                    href="https://github.com/J-M-Nichols"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label="GitHub"
-                                >GitHub</a>
-                            </OverlayTrigger>
-                        </Col>
-                        <Col 
-                            className="d-flex col-sm-3"
-                        >
-                            <OverlayTrigger 
-                                placement="bottom"
-                                overlay={
-                                    <Tooltip>Visit my website.</Tooltip>
-                                }
-                            >
-                                <a 
-                                    className="btn btn-outline-info flex-fill"
-                                    href="https://www.nichathangaming.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label="Nichathan Gaming"
-                                >NichathanGaming.com</a>
-                            </OverlayTrigger>
-                        </Col>
-                    </Row>
-                </Container>
+                        <a 
+                            className="btn btn-outline-success flex-fill"
+                            href="mailto:JNichols@NichathanGaming.com?subject=Contact%20from%20Road%20To%20The%20West%20Game&body=Hello%20NichathanGaming,"
+                            aria-label="Email"
+                        >Email Me</a>
+                    </OverlayTrigger>
+                    <OverlayTrigger 
+                        placement="bottom"
+                        overlay={
+                            <Tooltip>Visit my LinkedIn.</Tooltip>
+                        }
+                    >
+                        <a 
+                            className="btn btn-outline-success flex-fill"
+                            href="https://www.linkedin.com/in/johnathan-nichols-571b87272"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="LinkedIn"
+                        >LinkedIn</a>
+                    </OverlayTrigger>
+                    <OverlayTrigger 
+                        placement="bottom"
+                        overlay={
+                            <Tooltip>Visit my GitHub Page.</Tooltip>
+                        }
+                    >
+                        <a 
+                            className="btn btn-outline-success flex-fill"
+                            href="https://github.com/J-M-Nichols"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="GitHub"
+                        >GitHub</a>
+                    </OverlayTrigger>
+                    <OverlayTrigger 
+                        placement="bottom"
+                        overlay={
+                            <Tooltip>Visit my website.</Tooltip>
+                        }
+                    >
+                        <a 
+                            className="btn btn-outline-success flex-fill"
+                            href="https://www.nichathangaming.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Nichathan Gaming"
+                        >NichathanGaming.com</a>
+                    </OverlayTrigger>
+                </div>
             </section>
         </section>
     )

@@ -14,7 +14,10 @@ const CattleAction = () => {
 
     const acceptCattle = () => {
         dispatch(gainCattle(cattleCount))
-        dispatch(addContent(`You gained ${cattleCount} cattle.`))
+        dispatch(addContent({
+            content: `You gained ${cattleCount} cattle.`,
+            classNames: 'text-info'
+        }))
 
         dispatch(decrementTime())
     }

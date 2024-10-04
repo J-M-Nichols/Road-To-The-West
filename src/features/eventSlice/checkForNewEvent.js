@@ -82,6 +82,8 @@ export const checkForNewEvent = createAsyncThunk(
                 let baseMessage = ''
                 const notificationMessage = []
 
+                let finalMessage
+
                 //set actions for the new event
                 switch(newEvent.id){
                     //river crossing
@@ -146,12 +148,20 @@ export const checkForNewEvent = createAsyncThunk(
                         }
                         
                         if(notificationMessage.length > 0){
-                            dispatch(addContent(baseMessage + 'lost ' + notificationMessage.reduce((message, obj)=>{
+                            finalMessage = baseMessage + 'lost ' + notificationMessage.reduce((message, obj)=>{
                                 return `${message}${obj.amount} ${obj.type}, `
-                            }, '').slice(0,-2)+'.'))
+                            }, '').slice(0,-2)+'.'
+                            dispatch(addContent({
+                                content: finalMessage,
+                                classNames: 'text-danger'
+                            }))
                         }
                         else{
-                            dispatch(addContent(baseMessage + 'did not lose anything.'))
+                            finalMessage = baseMessage + 'did not lose anything.'
+                            dispatch(addContent({
+                                content: finalMessage,
+                                classNames: 'text-warning'
+                            }))
                         }
                         break
                     //illness
@@ -163,16 +173,25 @@ export const checkForNewEvent = createAsyncThunk(
 
                         if(settlerCount < settlers) {
                             const lostSettlersCount = settlers - settlerCount
-                            dispatch(addContent(`You lost ${lostSettlersCount} settlers to an illness.`))
+                            dispatch(addContent({
+                                content: `You lost ${lostSettlersCount} settlers to an illness.`,
+                                classNames: 'text-danger'
+                            }))
                             dispatch(removeSettlers(lostSettlersCount))
                         }
                         else {
-                            dispatch(addContent('Your settlers are ill but they all made it through the night.'))
+                            dispatch(addContent({
+                                content: 'Your settlers are ill but they all made it through the night.',
+                                classNames: 'text-warning'
+                            }))
                         }
                         break
                     //heat wave
                     case 2:
-                        dispatch(addContent('There is a heat wave, all food will expire faster.'))
+                        dispatch(addContent({
+                            content: 'There is a heat wave, all food will expire faster.',
+                            classNames: 'text-warning'
+                        }))
                         break
                     //native americans
                     case 3: // chance of 50% per resource to lose 5%-10% of the total
@@ -236,25 +255,42 @@ export const checkForNewEvent = createAsyncThunk(
                         }
                         
                         if(notificationMessage.length > 0){
-                            dispatch(addContent(baseMessage + 'lost ' + notificationMessage.reduce((message, obj)=>{
+                            finalMessage = baseMessage + 'lost ' + notificationMessage.reduce((message, obj)=>{
                                 return `${message}${obj.amount} ${obj.type}, `
-                            }, '').slice(0,-2)+'.'))
+                            }, '').slice(0,-2)+'.'
+                            dispatch(addContent({
+                                content: finalMessage,
+                                classNames: 'text-danger'
+                            }))
                         }
                         else{
-                            dispatch(addContent(baseMessage + 'did not lose anything.'))
+                            finalMessage = baseMessage + 'did not lose anything.'
+                            dispatch(addContent({
+                                content: finalMessage,
+                                classNames: 'text-warning'
+                            }))
                         }
                         break
                     //settlers
                     case 4:
-                        dispatch(addContent('You have encountered a group of friendly settlers. They may wish to trade with you.'))
+                        dispatch(addContent({
+                            content:'You have encountered a group of friendly settlers. They may wish to trade with you.',
+                            classNames: 'text-success'
+                        }))
                         break
                     //cattle
                     case 5:
-                        dispatch(addContent('You have encountered some cattle.'))
+                        dispatch(addContent({
+                            content: 'You have encountered some cattle.',
+                            classNames: 'text-success'
+                        }))
                         break
                     //storm
                     case 6:
-                        dispatch(addContent('There is a storm. You will move a bit slower in the mud.'))
+                        dispatch(addContent({
+                            content: 'There is a storm. You will move a bit slower in the mud.',
+                            classNames: 'text-warning'
+                        }))
                         break
                     default: break
                 }

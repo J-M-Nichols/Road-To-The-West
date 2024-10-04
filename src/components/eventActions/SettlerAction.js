@@ -44,16 +44,25 @@ const SettlerAction = () => {
         if(spentOnFood > 0){
             //spent money on food and preserved food
             if(foodCost > 0){
-                dispatch(addContent(`You traded ${spentOnFood} food and ${foodCost} preserved food for ${settlerCount} settlers.`))
+                dispatch(addContent({
+                    content: `You traded ${spentOnFood} food and ${foodCost} preserved food for ${settlerCount} settlers.`,
+                    classNames: 'text-info'
+                }))
             }
             //all money spent on food
             else{
-                dispatch(addContent(`You traded ${spentOnFood} food for ${settlerCount} settlers.`))
+                dispatch(addContent({
+                    content: `You traded ${spentOnFood} food for ${settlerCount} settlers.`,
+                    classNames: 'text-info'
+                }))
             }
         }
         //all money spent on preserved food
         else{
-            dispatch(addContent(`You traded ${foodCost} preserved food for ${settlerCount} settlers.`))
+            dispatch(addContent({
+                content: `You traded ${foodCost} preserved food for ${settlerCount} settlers.`,
+                classNames: 'text-info'
+            }))
         }
 
         if(foodCost > 0){
@@ -73,7 +82,10 @@ const SettlerAction = () => {
             wagons:Math.round(Math.random() * 2),//0-2
         }
 
-        dispatch(addContent(`You accepted the whole caravan of ${caravanResources.cattle>0?`${caravanResources.cattle} cattle, `:''}${caravanResources.wagons>0?`${caravanResources.wagons} wagons, `:''}${caravanResources.settlers} settlers and ${caravanResources.tools} tools.`))
+        dispatch(addContent({
+            content: `You accepted the whole caravan of ${caravanResources.cattle>0?`${caravanResources.cattle} cattle, `:''}${caravanResources.wagons>0?`${caravanResources.wagons} wagons, `:''}${caravanResources.settlers} settlers and ${caravanResources.tools} tools.`,
+                classNames: 'text-info'
+        }))
 
         dispatch(gainCattle(caravanResources.cattle))
         dispatch(addSettlers(caravanResources.settlers))

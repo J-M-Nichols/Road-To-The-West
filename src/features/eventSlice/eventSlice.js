@@ -1,20 +1,36 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { GitHubStorageHandler } from "github-localstorage-handler"
+import trackedPaths from "../../handlers/trackedPaths"
 
-const initialState = {
+const defaultEvent = {
     currentEvent: {name:''},
     timeLeft: 0,
 }
+
+const eventHandler = new GitHubStorageHandler(trackedPaths.event)
+
+const initialState = eventHandler.getObject(defaultEvent)
 
 const eventSlice = createSlice({
     name: 'event',
     initialState,
     reducers:{
-        startEvent: (state, action) => {
-            state.currentEvent = action.payload.currentEvent
-            state.timeLeft = action.payload.timeLeft
+        startEvent: (state, {payload}) => {
+            const newState = state
+            newState.currentEvent = payload.currentEvent
+            newState.timeLeft = payload.timeLeft
+
+            eventHandler.setObject(newState)
+            state = newState
+            return newState
         },
         decrementTime: (state)=>{
-            state.timeLeft -= 1
+            const newState = state
+            newState.timeLeft -= 1
+
+            eventHandler.setObject(newState)
+            state = newState
+            return newState
         }
     }
 })

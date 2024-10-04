@@ -1,0 +1,52 @@
+.brown-background{
+    background-color: #914F1E !important;
+}
+
+.light-brown-color{
+    color: #DEAC80 !important;
+}
+
+.light-brown-color-hover:hover{
+    background-color: #DEAC80 !important;
+}
+
+.light-brown-color:hover{
+    color: #F7DCB9 !important;
+}
+
+.hamburger{
+    width: 40px;
+    height: 4px;
+    background-color: #DEAC80 !important;
+}
+
+.hamburger-shell:hover .hamburger{
+    background-color: #F7DCB9 !important;
+}
+
+.border{
+    border-color: inherit !important;
+}
+
+html{
+    background-color: #F7DCB9 !important;
+}
+
+body{
+    background-color: inherit;
+    color: #914F1E;
+}
+
+.custom-scrollbar-css{
+    overflow-y: scroll;
+}
+  
+.custom-scrollbar-css::-webkit-scrollbar {
+    width: 5px;
+}
+  
+.custom-scrollbar-css::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background-color: #DEAC80;
+    background-image: linear-gradient(to top, #DEAC80 0%, #914F1E 100%);
+}

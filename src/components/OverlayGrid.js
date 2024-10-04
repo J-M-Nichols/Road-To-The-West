@@ -1,7 +1,7 @@
 import { Button, Col, Container, OverlayTrigger, Row, Tooltip } from "react-bootstrap"
 
 
-const OverlayGrid = ({title, elements, cols, buttonColor='outline-info'}) => {
+const OverlayGrid = ({title, elements, cols, buttonColor='outline-success'}) => {
     return (
         <article 
             className="m-3 p-3 border rounded"
@@ -11,7 +11,10 @@ const OverlayGrid = ({title, elements, cols, buttonColor='outline-info'}) => {
                 <Row
                     className='g-3 justify-content-center'
                 >
-                    {elements.map(({title, content}, index)=>{                        
+                    {elements.map(({title, content, setButtonColor}, index)=>{   
+                        let actualButtonColor = buttonColor 
+                        if(setButtonColor) actualButtonColor = setButtonColor
+                        
                         return (
                             <Col
                                 key={index}
@@ -24,7 +27,7 @@ const OverlayGrid = ({title, elements, cols, buttonColor='outline-info'}) => {
                                     }
                                 >
                                     <Button 
-                                        variant={buttonColor}
+                                        variant={actualButtonColor}
                                         className="flex-fill"
                                         style={{whiteSpace:'break-spaces'}}
                                     >{title}</Button>

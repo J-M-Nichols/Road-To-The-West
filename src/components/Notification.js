@@ -1,16 +1,21 @@
 import { useSelector } from "react-redux"
 
-
 const Notification = () =>{
-    const {content} = useSelector(state=>state.notification)
+    const notification = useSelector(state=>state.notification)
     
     return (
         <div 
-            className="border rounded m-3 p-3 overflow-auto"
-            style={{maxHeight:'20rem'}}
+            className="border rounded m-3 p-3 overflow-auto custom-scrollbar-css"
+            style={{
+                maxHeight:'20rem',
+                backgroundColor:'#DEAC80 !important'
+            }}
         >
             {
-                content.map((v, i)=><p key={i}>{v}</p>)
+                notification.map(({content, classNames}, i)=><p 
+                    key={i}
+                    className={`fw-bolder ${classNames}`}
+                >{content}</p>)
             }
         </div>
     )

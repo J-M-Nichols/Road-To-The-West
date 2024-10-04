@@ -29,7 +29,10 @@ const ActionButtons = () => {
         const {distance, message} = calculateTravelDistance(settlers, wagons, food, preservedFood, tools, travelMultiplier) 
         dispatch(updateDistanceTraveled(distance))
 
-        dispatch(addContent(`${message}You travelled ${distance} miles today.`))
+        dispatch(addContent({
+            content: `${message}You travelled ${distance} miles today.`,
+            classNames: 'text-primary'
+        }))
 
         dispatch(endTurn())
         dispatch(checkGameCompletion({
@@ -48,7 +51,7 @@ const ActionButtons = () => {
         let foodToPreserve = 300 + Math.floor(Math.random() * 200)
 
         if(settlers < 10) {
-            const reduceAmount = (10-settlers)/10
+            const reduceAmount = settlers/10
             foodToPreserve = Math.floor(foodToPreserve * reduceAmount)
         }
         if(foodToPreserve > food) foodToPreserve = food
@@ -61,7 +64,17 @@ const ActionButtons = () => {
             dispatch(consumeFood(foodToPreserve))
         }
 
-        dispatch(addContent(foodToPreserve>0 ? `You preserved ${foodToPreserve} food.` : 'You do not have enough food to preserve.'))
+        if(foodToPreserve > 0){
+            dispatch(addContent({
+                content: `You preserved ${foodToPreserve} food.`,
+                classNames: 'text-primary'
+            }))
+        }else{
+            dispatch(addContent({
+                content: 'You do not have enough food to preserve.',
+                classNames: 'text-danger'
+            }))
+        }
 
         dispatch(endTurn())
         dispatch(checkForNewEvent(false))
@@ -71,7 +84,7 @@ const ActionButtons = () => {
         let gainAmount = 500+Math.floor(Math.random() * 750)
 
         if(settlers < 10) {
-            const reduceAmount = (10-settlers)/10
+            const reduceAmount = settlers/10
             gainAmount = Math.floor(gainAmount * reduceAmount)
         }
 
@@ -81,9 +94,15 @@ const ActionButtons = () => {
                 amount: gainAmount,
                 createdAt: dayCount
             }))
-            dispatch(addContent(`You killed 1 cattle and gained ${gainAmount} food.`))
+            dispatch(addContent({
+                content: `You killed 1 cattle and gained ${gainAmount} food.`,
+                classNames: 'text-success'
+            }))
         }
-        else dispatch(addContent('You do not have any cattle to turn into food.'))
+        else dispatch(addContent({
+            content: 'You do not have any cattle to turn into food.',
+            classNames: 'text-danger'
+        }))
 
         dispatch(endTurn())
         dispatch(checkForNewEvent(false))
@@ -235,7 +254,7 @@ const ActionButtons = () => {
     }
 
     return (
-        <section className="border rounded p-3 d-flex flex-wrap justify-content-around m-3">
+        <section className="border gap-5 rounded p-3 d-flex flex-wrap justify-content-center m-3">
             <button type='button' className='btn btn-primary' onClick={handleTravel}>Travel</button>
             <button type='button' className='btn btn-primary' onClick={handlePreserveFood}>Preserve Food</button>
             <button type='button' className='btn btn-warning' onClick={handleKillCattle}>Kill Cattle</button>

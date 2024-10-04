@@ -1,30 +1,46 @@
 import {createSlice} from '@reduxjs/toolkit'
+import { GitHubStorageHandler } from 'github-localstorage-handler'
+import trackedPaths from '../../../handlers/trackedPaths'
 
-const initialState=[]
+const foodHandler = new GitHubStorageHandler(trackedPaths.food)
+
+const initialState=foodHandler.getObject([])
 
 const foodSlice = createSlice({
     name:'food',
     initialState,
     reducers:{
-        addFood: (state, action)=>{
-            const {amount, createdAt} = action.payload
-            state.push({
+        addFood: (state, {payload})=>{
+            const {amount, createdAt} = payload
+            const newState = state
+            newState.push({
                 amount,
                 createdAt,
             })
+
+            foodHandler.setObject(newState)
+
+            state = newState
+            return newState
         },
-        consumeFood: (state, action)=>{
-            let amount = action.payload
-            while(amount > 0 && state.length > 0){
-                if(state[0].amount > amount){
-                    state[0].amount -= amount
+        consumeFood: (state, {payload})=>{
+            let amount = payload
+            const newState = state
+
+            while(amount > 0 && newState.length > 0){
+                if(newState[0].amount > amount){
+                    newState[0].amount -= amount
                     amount = 0
                 }
                 else {
-                    amount -= state[0].amount
-                    state.shift()
+                    amount -= newState[0].amount
+                    newState.shift()
                 }
             }
+
+            foodHandler.setObject(newState)
+            state = newState
+            return newState
         }
     },
 })

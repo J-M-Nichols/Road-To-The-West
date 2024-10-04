@@ -9,6 +9,8 @@ import seasonsReducer from "../features/seasonsSlice/seasonsSlice"
 import eventReducer from "../features/eventSlice/eventSlice"
 import gameReducer from '../features/gameSlice/gameSlice'
 import notificationReducer from "../features/notificationSlice/notificationSlice"
+import { GitHubStorageHandler } from "github-localstorage-handler"
+import trackedPaths from "../handlers/trackedPaths"
 
 const rootReducer = combineReducers({
     food: foodReducer,
@@ -27,4 +29,5 @@ export const store = configureStore({
     reducer: rootReducer,
 })
 
-store.dispatch(gainCattle(store.getState().wagons))
+const cattleHandler = new GitHubStorageHandler(trackedPaths.cattle)
+if(!cattleHandler.getItem()) store.dispatch(gainCattle(store.getState().wagons))

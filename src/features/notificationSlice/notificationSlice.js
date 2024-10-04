@@ -1,15 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { GitHubStorageHandler } from "github-localstorage-handler"
+import trackedPaths from "../../handlers/trackedPaths"
 
-const initialState = {
-    content: []
-}
+const notificationHandler = new GitHubStorageHandler(trackedPaths.notification)
+
+const initialState = notificationHandler.getObject([])
 
 const notificationSlice = createSlice({
     name:'notification',
     initialState,
     reducers:{
-        addContent: (state, action) => {
-            state.content.unshift(action.payload)
+        addContent: (state, {payload}) => {
+            const newState = state
+            newState.unshift({
+                content: payload.content, 
+                classNames: payload.classNames
+            })
+
+            notificationHandler.setObject(newState)
+
+            state = newState
+            return newState
         }
     }
 })

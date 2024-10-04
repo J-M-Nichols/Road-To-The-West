@@ -53,12 +53,15 @@ export const endTurn = createAsyncThunk(
             }
 
             preservedFoodAte = totalFood - foodNeeded
-            if(preservedFoodAte > 0) foodMessage += foodAte > 0 ? ` and ${preservedFoodAte} preserved.` : `Your settlers ate ${preservedFoodAte} preserved food.`
+            if(preservedFoodAte > 0) foodMessage += foodAte > 0 ? ` and ${preservedFoodAte} preserved food.` : `Your settlers ate ${preservedFoodAte} preserved food.`
         }
 
         //settlers die off if still hungry
         if(foodNeeded > 0) {
-            dispatch(addContent(`${foodNeeded} settlers were lost to starvation.`))
+            dispatch(addContent({
+                content: `${foodNeeded} settlers were lost to starvation.`,
+                classNames: 'text-danger'
+            }))
             dispatch(removeSettlers(foodNeeded))
             settlers -= foodNeeded
         }
@@ -67,7 +70,10 @@ export const endTurn = createAsyncThunk(
         const cattle = state.cattle
         if(cattle > settlers){
             const cattleLost = cattle - settlers
-            dispatch(addContent(`${cattleLost} cattle wandered off due to a lack of settlers.`))
+            dispatch(addContent({
+                content:`${cattleLost} cattle wandered off due to a lack of settlers.`,
+                classNames: 'text-danger'
+            }))
             dispatch(killCattle(cattleLost))
         }
 
@@ -75,7 +81,10 @@ export const endTurn = createAsyncThunk(
         const wagons = state.wagons
         if(wagons > cattle){
             const wagonsLost = wagons - cattle
-            dispatch(addContent(`${wagonsLost} wagons had to be left behind because there weren't enough cattle.`))
+            dispatch(addContent({
+                content: `${wagonsLost} wagons had to be left behind because there weren't enough cattle.`,
+                classNames: 'text-danger'
+            }))
             dispatch(removeWagons(wagonsLost))
         }
 
@@ -87,13 +96,19 @@ export const endTurn = createAsyncThunk(
             const daysOld = dayCount - createdAt
 
             if(daysOld >= foodExpiration) expiredFoodCount += amount
-            else if(daysOld + 1 >= foodExpiration) dispatch(addContent(`${amount} food will expire soon.`))
+            else if(daysOld + 1 >= foodExpiration) dispatch(addContent({
+                content: `${amount} food will expire soon.`,
+                classNames: 'text-warning'
+            }))
         })
 
         expiredFoodCount -= foodAte
 
         if(expiredFoodCount > 0){
-            dispatch(addContent(`${expiredFoodCount} food has expired.`))
+            dispatch(addContent({
+                content: `${expiredFoodCount} food has expired.`,
+                classNames: 'text-danger'
+            }))
             dispatch(consumeFood(expiredFoodCount))
         }
 
@@ -104,15 +119,24 @@ export const endTurn = createAsyncThunk(
             const daysOld = dayCount - createdAt
 
             if(daysOld >= preservedFoodExpiration) expiredPreservedFoodCount += amount
-            else if((daysOld + 5) >= preservedFoodExpiration) dispatch(addContent(`${amount} preserved food will expire soon.`))
+            else if((daysOld + 5) >= preservedFoodExpiration) dispatch(addContent({
+                content: `${amount} preserved food will expire soon.`,
+                classNames: 'text-warning'
+            }))
         })
 
         expiredPreservedFoodCount -= preservedFoodAte
     
         if(expiredPreservedFoodCount > 0){
-            dispatch(addContent(`${expiredPreservedFoodCount} preserved food has expired.`))
+            dispatch(addContent({
+                content:`${expiredPreservedFoodCount} preserved food has expired.`,
+                classNames: 'text-danger'
+            }))
             dispatch(consumePreservedFood(expiredPreservedFoodCount))
         }
-        dispatch(addContent(foodMessage))
+        dispatch(addContent({
+            content: foodMessage,
+                classNames: 'text-primary'
+        }))
     }
 )
